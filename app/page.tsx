@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import { toast } from "react-hot-toast"
 import CountDownTimer from "./components/count-down-timer";
+import Marquee from "react-fast-marquee";
+import AdminControls from "./components/admin-controls";
 
 export default function Home() {
     const address = useAddress();
@@ -20,7 +22,9 @@ export default function Home() {
     const { data: ticketPrice } = useContractRead(contract, "ticketPrice");
     const { data: ticketCommision } = useContractRead(contract, "ticketCommission");
     const { data: expiration } = useContractRead(contract, "expiration");
-
+    const { data: lastWinner } = useContractRead(contract, "lastWinner");
+    const { data: lastWinnerAmount } = useContractRead(contract, "lastWinnerAmount");
+    const { data: isLotterOperator } = useContractRead(contract, "lotteryOperator")
     const { data: tickets } = useContractRead(contract, "getTickets")
 
     useEffect(() => {
@@ -32,6 +36,8 @@ export default function Home() {
     }, [tickets, address])
 
     const { mutateAsync: BuyTickets } = useContractWrite(contract, "BuyTickets")
+    const { mutateAsync: WithdrawWinnings } = useContractWrite(contract, "WithdrawWinnings")
+    const { data: winnings } = useContractRead(contract, "getWinningsForAddress", [address])
 
     const handleClick = async () => {
         console
@@ -41,7 +47,7 @@ export default function Home() {
         const amountToBuy = Number(ethers.utils.formatEther(ticketPrice.toString())) * Number(quantity)
 
         try {
-            const data = await BuyTickets({
+            await BuyTickets({
                 args: [],
                 overrides: {
                     value: ethers.utils.parseEther(amountToBuy.toString()),
@@ -55,17 +61,52 @@ export default function Home() {
         }
     }
 
+    const onWithdrawWinnings = async () => {
+        const notification = toast.loading("Withdrawing winnings")
+        try {
+            await WithdrawWinnings({})
+            toast.success("withdraw success", { id: notification })
+        }
+        catch (err) {
+            toast.error("something went wrong", { id: notification })
+            console.error("contract call failure", err)
+        }
+    }
+
     if (isLoading) return <Loading />
     if (!address) return <Login />
 
     return (
         <main className="flex-1">
             <Header />
+            <Marquee className="bg-background p-5 mb-5" gradient={false} speed={100}>
+                <div className="flex space-x-2 mx-10">
+                    <h4 className="text-white font-bold">Last winner: {lastWinner?.toString()}</h4>
+                    <h4 className="text-white font-bold">Previous winnigs: {lastWinnerAmount && ethers.utils.formatEther(lastWinnerAmount?.toString())}{" "}Matic</h4>
+                </div>
+            </Marquee>
+
+            {isLotterOperator === address && (
+                <div className="flex justify-center">
+                    <AdminControls />
+                </div>
+            )}
+
+            {winnings > 0 && (
+                <div className="max-w-md md:max-w-2xl lg:max-w-4xl mx-auto mt-5 text-white text-xl">
+                    <button onClick={onWithdrawWinnings} className="p-5 bg-gradient-to-b from-orange-500 to-primary animate-pulse text-center rounded-xl w-full">
+                        <p className="font-bold">Winner Winner Chicken Dinner!</p>
+                        <p>Total Winnings: {ethers.utils.formatEther(winnings.toString())}{" "} matic</p>
+                        <br />
+                        <p className="font-semibold">Click here to withdraw winnings</p>
+                    </button>
+                </div>
+            )}
 
             {/* left side */}
-            <div className="space-y-5 md:space-y-0 m-5 md:flex md:flex-row items-start justify-center md:space-x-5 max-w-6xl">
+            <div className="space-y-5 md:space-y-0 m-5 md:flex md:flex-row items-start justify-center md:space-x-5 max-w-6xl mx-auto">
                 <div className="stats-container">
-                    <h1 className="text-5xl text-white font-semibold text-center">
+                    <h1 className="text-5xl text-white font-semibold text-center mb-2">
                         The Next Draw
                     </h1>
 
@@ -143,8 +184,6 @@ export default function Home() {
                         className="mt-5 w-full bg-gradient-to-br from-orange-500 to-primary px-10 py-5 rounded-md text-white shadow-xl disabled:from-gray-600 disabled:cursor-not-allowed disabled:text-gray-100 font-semibold">
                         Buy {quantity} Tickets for {ticketPrice && Number(ethers.utils.formatEther(ticketPrice.toString())) * Number(quantity)} matic
                     </button>
-                </div>
-
                 {userTickets > 0 && (
                     <div className="stats">
                         <p className="text-lg mb-2">You have {userTickets} tickets in this draw</p>
@@ -159,6 +198,8 @@ export default function Home() {
                         </div>
                     </div>
                 )}
+                </div>
+
             </div>
 
             <footer className="text-center text-sm text-gray-500 mt-8 px-4 max-w-2xl mx-auto">

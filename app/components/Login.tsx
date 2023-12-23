@@ -13,7 +13,7 @@ const Login = () => {
                     className='rounded-full h-56 w-56 mb-10'
                 />
                 <h1 className='text-5xl text-white font-bold'>Rapid Draw</h1>
-                <h2 className='text-white'>Get started by connecting ypur wallet</h2>
+                <h2 className='text-white mt-2'>Get started by connecting ypur wallet</h2>
                 <button
                     className='bg-white px-8 py-5 mt-10 rounded-lg shadow-lg font-bold'
                     onClick={() => connectWallet()}
