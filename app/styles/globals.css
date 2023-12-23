@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .stats {
+        @apply bg-background text-white p-4 flex-1 rounded-xl border-2 border-primary;
+    }
+
+    .stats-container {
+        @apply bg-background p-5 rounded-lg border border-primary;
+    }
+
+    .countdown {
+        @apply p-8 text-5xl text-center text-white rounded-lg lg:min-w-[150px] bg-primary
+    }
+
+    .countdown-label {
+        @apply text-center text-white uppercase text-sm pt-4
+    }
+}

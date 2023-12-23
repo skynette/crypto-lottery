@@ -4,11 +4,18 @@ import React from 'react'
 interface NavButtonProps {
     title: string,
     isActive?: boolean
+    onClick?: () => void
 }
 
-function NavButton({ title, isActive }: NavButtonProps) {
+function NavButton({ title, isActive, onClick }: NavButtonProps) {
     return (
-        <button className={cn('font-bold text-white px-4 py-2 rounded hover:bg-primary', isActive && 'bg-primary')}>{title}</button>
+        <button
+            onClick={onClick}
+            className={
+                cn('font-bold text-white px-4 py-2 rounded hover:bg-primary',
+                    isActive && 'bg-primary')
+            }
+        >{title}</button>
     )
 }
 

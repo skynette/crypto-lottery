@@ -1,13 +1,18 @@
+'use client';
 /* eslint-disable @next/next/no-img-element */
 import { FC } from 'react'
 import NavButton from './nav-button'
 import { Menu } from 'lucide-react'
+import { useAddress, useDisconnect } from '@thirdweb-dev/react';
 
 interface HeaderProps {
 
 }
 
 const Header: FC<HeaderProps> = ({ }) => {
+    const address = useAddress();
+    const disconnect = useDisconnect();
+
     return (
         <header className='grid grid-cols-2 md:grid-cols-5 justify-between items-center p-5'>
             <div className='flex items-center space-x-2'>
@@ -18,14 +23,14 @@ const Header: FC<HeaderProps> = ({ }) => {
                 />
                 <div>
                     <h1 className='text-lg text-white font-bold'>RAPID DRAW</h1>
-                    <p className='text-xs text-primary truncate'>User...</p>
+                    <p className='text-xs text-primary truncate'>User: {address?.substring(0,5)}...{address?.substring(address.length, address.length-5)}</p>
                 </div>
             </div>
 
             <div className='hidden md:col-span-3 md:flex items-center justify-center rounded-md'>
                 <div className='bg-background p-4 space-x-2'>
                     <NavButton isActive title='buy tickets' />
-                    <NavButton title='logout' />
+                    <NavButton onClick={disconnect} title='logout' />
                 </div>
             </div>
 
@@ -34,7 +39,7 @@ const Header: FC<HeaderProps> = ({ }) => {
                     <Menu className="h-8 w-8 mx-auto text-white hover:cursor-pointer" />
                 </div>
                 <span className='md:hidden'>
-                    <NavButton title='logout' />
+                    <NavButton onClick={disconnect} title='logout' />
                 </span>
             </div>
         </header>
