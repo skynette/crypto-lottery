@@ -59,33 +59,33 @@ const AdminControls = () => {
         }
     }
     if (!contract || isLoading) return (
-        <div className="text-white text-center px-5 py-3 rounded-md border-primary/20 border">
+        <div className="text-white text-center px-5 py-3 rounded-md border-purple-800 border">
             <h2>Admin Controls</h2>
             <p>Loading...</p>
         </div>
     )
 
     return (
-        <div className="text-white text-center px-5 py-3 rounded-md border-primary/20 border">
+        <div className="text-white text-center px-5 py-3 rounded-md border-purple-800 border bg-indigo-900">
             <h2>Admin Controls</h2>
             <p className="mb-2">Total Commision to be withdrawn:
                 {' '}{totalCommision ? ethers.utils.formatEther(totalCommision?.toString()) : '0'}{" "} MATIC
             </p>
 
             <div className="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-2">
-                <button onClick={drawWinner} className="bg-primary/50 p-2 flex-1 rounded-md border-2 border-primary/50 hover:bg-primary/30">
+                <button onClick={drawWinner} className="bg-indigo-900 p-2 flex-1 rounded-md border-2 border-purple-800 hover:bg-indigo-900/30 transition-colors">
                     <StarIcon className="h-5 w-5 mx-auto mb-2" />
                     Draw Winner
                 </button>
-                <button onClick={withdraw} className="bg-primary/50 p-2 flex-1 rounded-md border-2 border-primary/50 hover:bg-primary/30">
+                <button onClick={withdraw} className="bg-indigo-900 p-2 flex-1 rounded-md border-2 border-purple-800 hover:bg-indigo-900/30 transition-colors">
                     <DollarSignIcon className="h-5 w-5 mx-auto mb-2" />
                     Withdraw Commission
                 </button>
-                <button onClick={restart} className="bg-primary/50 p-2 flex-1 rounded-md border-2 border-primary/50 hover:bg-primary/30">
+                <button onClick={restart} className="bg-indigo-900 p-2 flex-1 rounded-md border-2 border-purple-800 hover:bg-indigo-900/30 transition-colors">
                     <RotateCcw className="h-5 w-5 mx-auto mb-2" />
                     Restart Draw
                 </button>
-                <button onClick={refundAll} className="bg-primary/50 p-2 flex-1 rounded-md border-2 border-primary/50 hover:bg-primary/30">
+                <button onClick={refundAll} className="bg-indigo-900 p-2 flex-1 rounded-md border-2 border-purple-800 hover:bg-indigo-900/30 transition-colors">
                     <Download className="h-5 w-5 mx-auto mb-2" />
                     Refund All
                 </button>

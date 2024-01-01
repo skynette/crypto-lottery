@@ -1,6 +1,7 @@
 'use client';
 /* eslint-disable @next/next/no-img-element */
 import { useMetamask } from '@thirdweb-dev/react'
+import Image from 'next/image';
 import React from 'react'
 
 const Login = () => {
@@ -8,9 +9,12 @@ const Login = () => {
     return (
         <div className='bg-background min-h-screen flex flex-col items-center justify-center text-center'>
             <div className='flex flex-col items-center mb-10'>
-                <img src="https://images.unsplash.com/photo-1620321023374-d1a68fbc720d?q=80&w=897&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                    alt=""
-                    className='rounded-full h-56 w-56 mb-10'
+                <Image src="/logo.png"
+                    alt="logo"
+                    className='mb-10'
+                    height={200}
+                    width={200}
+                    priority={true}
                 />
                 <h1 className='text-5xl text-white font-bold'>Rapid Draw</h1>
                 <h2 className='text-white mt-2'>Get started by connecting ypur wallet</h2>

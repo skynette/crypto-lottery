@@ -79,7 +79,7 @@ export default function Home() {
     return (
         <main className="flex-1">
             <Header />
-            <Marquee className="bg-background p-5 mb-5" gradient={false} speed={100}>
+            <Marquee className="p-5 mb-5" gradient={false} speed={100}>
                 <div className="flex space-x-2 mx-10">
                     <h4 className="text-white font-bold">Last winner: {lastWinner?.toString()}</h4>
                     <h4 className="text-white font-bold">Previous winnigs: {lastWinnerAmount && ethers.utils.formatEther(lastWinnerAmount?.toString())}{" "}Matic</h4>
@@ -94,7 +94,7 @@ export default function Home() {
 
             {winnings > 0 && (
                 <div className="max-w-md md:max-w-2xl lg:max-w-4xl mx-auto mt-5 text-white text-xl">
-                    <button onClick={onWithdrawWinnings} className="p-5 bg-gradient-to-b from-orange-500 to-primary animate-pulse text-center rounded-xl w-full">
+                    <button onClick={onWithdrawWinnings} className="p-5 bg-winner animate-pulse text-center rounded-xl w-full">
                         <p className="font-bold">Winner Winner Chicken Dinner!</p>
                         <p>Total Winnings: {ethers.utils.formatEther(winnings.toString())}{" "} matic</p>
                         <br />
@@ -106,7 +106,7 @@ export default function Home() {
             {/* left side */}
             <div className="space-y-5 md:space-y-0 m-5 md:flex md:flex-row items-start justify-center md:space-x-5 max-w-6xl mx-auto">
                 <div className="stats-container">
-                    <h1 className="text-5xl text-white font-semibold text-center mb-2">
+                    <h1 className="text-4xl text-white font-semibold text-center mb-2">
                         The Next Draw
                     </h1>
 
@@ -143,7 +143,7 @@ export default function Home() {
                                 matic</p>
                         </div>
 
-                        <div className="flex text-white items-center space-x-2 bg-background border-primary border p-4">
+                        <div className="flex text-white items-center space-x-2 bg-indigo-900 border-purple-800 border p-4">
                             <p>Tickets</p>
                             <input
                                 type="number"
@@ -156,7 +156,7 @@ export default function Home() {
                         </div>
 
                         <div className="space-y-2">
-                            <div className="flex items-center justify-between text-primary text-sm italic font-extrabold">
+                            <div className="flex items-center justify-between text-purple-700 text-sm italic font-extrabold">
                                 <p>Total cost of tickets</p>
                                 <p>
                                     {ticketPrice && Number(ethers.utils.formatEther(ticketPrice.toString())) * Number(quantity)}{" "} matic
@@ -165,14 +165,14 @@ export default function Home() {
                             </div>
                         </div>
 
-                        <div className="flex items-center justify-between text-primary text-xs italic">
+                        <div className="flex items-center justify-between text-purple-700 text-xs italic">
                             <p>Service fees</p>
                             <p>
                                 {ticketCommision && ethers.utils.formatEther(ticketCommision.toString())}{" "}
                                 matic</p>
                         </div>
 
-                        <div className="flex items-center justify-between text-primary text-xs italic">
+                        <div className="flex items-center justify-between text-purple-700 text-xs italic">
                             <p>+ Network fees</p>
                             <p>TBC</p>
                         </div>
@@ -181,7 +181,7 @@ export default function Home() {
                     <button
                         disabled={expiration?.toString() <= Date.now().toString() || remainingTickets?.toNumber() <= 0}
                         onClick={handleClick}
-                        className="mt-5 w-full bg-gradient-to-br from-orange-500 to-primary px-10 py-5 rounded-md text-white shadow-xl disabled:from-gray-600 disabled:cursor-not-allowed disabled:text-gray-100 font-semibold">
+                        className="mt-5 w-full bg-buy px-10 py-5 rounded-md text-white shadow-xl disabled:from-gray-600 disabled:cursor-not-allowed disabled:text-gray-100 font-semibold">
                         Buy {quantity} Tickets for {ticketPrice && Number(ethers.utils.formatEther(ticketPrice.toString())) * Number(quantity)} matic
                     </button>
                 {userTickets > 0 && (
@@ -191,7 +191,7 @@ export default function Home() {
                             {Array(userTickets)
                                 .fill(0)
                                 .map((_, index) => (
-                                    <p className="text-primary h-20 w-12 bg-primary/30 rounded-lg flex flex-shrink-0 items-center justify-center text-xs italic" key={index}>
+                                    <p className="text-purple-700 h-20 w-12 bg-background rounded-lg flex flex-shrink-0 items-center justify-center text-xs italic" key={index}>
                                         {index + 1}
                                     </p>
                                 ))}
@@ -202,7 +202,7 @@ export default function Home() {
 
             </div>
 
-            <footer className="text-center text-sm text-gray-500 mt-8 px-4 max-w-2xl mx-auto">
+            <footer className="text-center text-sm text-white mt-8 px-4 max-w-2xl mx-auto">
                 <p>
                     Disclaimer: Participating in the lottery involves risks. Make sure to conduct your own research and understand the terms before buying tickets.
                 </p>

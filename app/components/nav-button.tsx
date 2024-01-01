@@ -12,8 +12,8 @@ function NavButton({ title, isActive, onClick }: NavButtonProps) {
         <button
             onClick={onClick}
             className={
-                cn('font-bold text-white px-4 py-2 rounded hover:bg-primary',
-                    isActive && 'bg-primary')
+                cn('font-bold text-white px-4 py-2 rounded hover:bg-purple-800 transition-colors',
+                    isActive && 'bg-purple-400')
             }
         >{title}</button>
     )
