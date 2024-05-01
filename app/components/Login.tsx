@@ -17,7 +17,7 @@ const Login = () => {
                     priority={true}
                 />
                 <h1 className='text-5xl text-white font-bold'>Rapid Draw</h1>
-                <h2 className='text-white mt-2'>Get started by connecting ypur wallet</h2>
+                <h2 className='text-white mt-2'>Get started by connecting your wallet</h2>
                 <button
                     className='bg-white px-8 py-5 mt-10 rounded-lg shadow-lg font-bold'
                     onClick={() => connectWallet()}
