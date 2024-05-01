@@ -69,7 +69,7 @@ const AdminControls = () => {
         <div className="text-white text-center px-5 py-3 rounded-md border-purple-800 border bg-indigo-900">
             <h2>Admin Controls</h2>
             <p className="mb-2">Total Commision to be withdrawn:
-                {' '}{totalCommision ? ethers.utils.formatEther(totalCommision?.toString()) : '0'}{" "} MATIC
+                {' '}{totalCommision ? ethers.utils.formatEther(totalCommision?.toString()) : '0'}{" "} ETH
             </p>
 
             <div className="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-2">

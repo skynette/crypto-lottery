@@ -82,7 +82,7 @@ export default function Home() {
             <Marquee className="p-5 mb-5" gradient={false} speed={100}>
                 <div className="flex space-x-2 mx-10">
                     <h4 className="text-white font-bold">Last winner: {lastWinner?.toString()}</h4>
-                    <h4 className="text-white font-bold">Previous winnigs: {lastWinnerAmount && ethers.utils.formatEther(lastWinnerAmount?.toString())}{" "}Matic</h4>
+                    <h4 className="text-white font-bold">Previous winnigs: {lastWinnerAmount && ethers.utils.formatEther(lastWinnerAmount?.toString())}{" "}ETH</h4>
                 </div>
             </Marquee>
 
@@ -96,7 +96,7 @@ export default function Home() {
                 <div className="max-w-md md:max-w-2xl lg:max-w-4xl mx-auto mt-5 text-white text-xl">
                     <button onClick={onWithdrawWinnings} className="p-5 bg-winner animate-pulse text-center rounded-xl w-full">
                         <p className="font-bold">Winner Winner Chicken Dinner!</p>
-                        <p>Total Winnings: {ethers.utils.formatEther(winnings.toString())}{" "} matic</p>
+                        <p>Total Winnings: {ethers.utils.formatEther(winnings.toString())}{" "} ETH</p>
                         <br />
                         <p className="font-semibold">Click here to withdraw winnings</p>
                     </button>
@@ -117,7 +117,7 @@ export default function Home() {
                                 {
                                     currentWinningReward && ethers.utils.formatEther(currentWinningReward.toString())
                                 }{" "}
-                                Matic
+                                ETH
                             </p>
                         </div>
 
@@ -140,7 +140,7 @@ export default function Home() {
                             <p>{
                                 ticketPrice && ethers.utils.formatEther(ticketPrice.toString())
                             }{" "}
-                                matic</p>
+                                ETH</p>
                         </div>
 
                         <div className="flex text-white items-center space-x-2 bg-indigo-900 border-purple-800 border p-4">
@@ -159,7 +159,7 @@ export default function Home() {
                             <div className="flex items-center justify-between text-purple-700 text-sm italic font-extrabold">
                                 <p>Total cost of tickets</p>
                                 <p>
-                                    {ticketPrice && Number(ethers.utils.formatEther(ticketPrice.toString())) * Number(quantity)}{" "} matic
+                                    {ticketPrice && Number(ethers.utils.formatEther(ticketPrice.toString())) * Number(quantity)}{" "} ETH
                                 </p>
 
                             </div>
@@ -169,7 +169,7 @@ export default function Home() {
                             <p>Service fees</p>
                             <p>
                                 {ticketCommision && ethers.utils.formatEther(ticketCommision.toString())}{" "}
-                                matic</p>
+                                ETH</p>
                         </div>
 
                         <div className="flex items-center justify-between text-purple-700 text-xs italic">
@@ -182,7 +182,7 @@ export default function Home() {
                         disabled={expiration?.toString() <= Date.now().toString() || remainingTickets?.toNumber() <= 0}
                         onClick={handleClick}
                         className="mt-5 w-full bg-buy px-10 py-5 rounded-md text-white shadow-xl disabled:from-gray-600 disabled:cursor-not-allowed disabled:text-gray-100 font-semibold">
-                        Buy {quantity} Tickets for {ticketPrice && Number(ethers.utils.formatEther(ticketPrice.toString())) * Number(quantity)} matic
+                        Buy {quantity} Tickets for {ticketPrice && Number(ethers.utils.formatEther(ticketPrice.toString())) * Number(quantity)} ETH
                     </button>
                 {userTickets > 0 && (
                     <div className="stats">

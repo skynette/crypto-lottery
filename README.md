@@ -3,7 +3,7 @@
 ![Splash Screen](https://res.cloudinary.com/do3tlu1ph/image/upload/v1704122884/vtodbepmxqd5sg5ap431.png)
 
 ![enter image description here](https://res.cloudinary.com/do3tlu1ph/image/upload/v1704122885/sitgc5zen6oajdwv7kog.png)
-This project is a decentralized application (dapp) for a lottery system built on the Polygon (Matic) blockchain. The dapp allows users to participate in a lottery by purchasing tickets using Matic cryptocurrency. The smart contract governing the lottery is deployed on the Polygon Mumbai testnet.
+This project is a decentralized application (dapp) for a lottery system built on the Base blockchain. The dapp allows users to participate in a lottery by purchasing tickets using ETH cryptocurrency. The smart contract governing the lottery is deployed on the Base network.
 
   
 
@@ -15,11 +15,11 @@ This project is a decentralized application (dapp) for a lottery system built on
 
   
 
--  **Ticket Price:** 0.01 Matic
+-  **Ticket Price:** 0.001 ETH
 
 -  **Maximum Tickets per Lottery:** 100
 
--  **Ticket Commission:** 0.001 Matic per ticket
+-  **Ticket Commission:** 0.0001 ETH per ticket
 
 -  **Duration:** 30 minutes for each lottery
 
@@ -39,7 +39,7 @@ This project is a decentralized application (dapp) for a lottery system built on
 
   
 
-- Users can purchase tickets by sending the required Matic.
+- Users can purchase tickets by sending the required ETH.
 
 - The operator can draw the winner randomly after the purchase period expires.
 
@@ -71,13 +71,13 @@ This project is a decentralized application (dapp) for a lottery system built on
 
   
 
-1. Ensure you have a compatible Ethereum wallet (such as MetaMask) configured for the Polygon network (Mumbai testnet) and sufficient Matic to purchase tickets.
+1. Ensure you have a compatible Ethereum wallet (such as MetaMask) configured for the Base network and sufficient ETH to purchase tickets.
 
 2. Access the dapp interface deployed on a web browser.
 
 3. Connect your Ethereum wallet to the dapp and switch to the Mumbai testnet.
 
-4. View the current lottery details, such as remaining tickets, ticket price, and total pool, in Matic.
+4. View the current lottery details, such as remaining tickets, ticket price, and total pool, in ETH.
 
 5. Purchase tickets by specifying the quantity and confirming the transaction.
 
