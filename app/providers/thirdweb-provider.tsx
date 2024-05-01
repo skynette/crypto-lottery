@@ -6,7 +6,7 @@ interface ThirdWebProviderProps {
 }
 const ThirdWebProvider: React.FC<ThirdWebProviderProps> = ({ children }) => {
     return (
-        <ThirdwebProvider activeChain={'mumbai'} clientId={process.env.NEXT_THIRDWEB_CLIENT_ID}>
+        <ThirdwebProvider activeChain={'base'} clientId={process.env.NEXT_THIRDWEB_CLIENT_ID}>
             {children}
         </ThirdwebProvider>
 
